@@ -92,7 +92,7 @@ public class RestockVillager {
             }
 
 
-            if (timeTillNextRestock == Long.MAX_VALUE) {
+            if (timeTillNextRestock == Long.MAX_VALUE && !restockTimes.isEmpty()) {
                 timeTillNextRestock = (24000 + currentDay + restockTimes.get(0)) - vil.getWorld().getFullTime();
             }
 

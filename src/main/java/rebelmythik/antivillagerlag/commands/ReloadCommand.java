@@ -22,6 +22,7 @@ public class ReloadCommand implements CommandExecutor {
             }
             sender.sendMessage(colorcodes.cm(plugin.getConfig().getString("messages.reload-message")));
             plugin.reloadConfig();
+            return true;
         }
         return false;
     }
