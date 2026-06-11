@@ -45,7 +45,7 @@ public class VillagerLevelManager {
             vil.setAware(true);
         } else return;
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
             vil.setAware(false);
         }, 100L);
     }

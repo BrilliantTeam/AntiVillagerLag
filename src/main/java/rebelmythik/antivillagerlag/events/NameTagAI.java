@@ -10,7 +10,6 @@ import rebelmythik.antivillagerlag.utils.ColorCode;
 import rebelmythik.antivillagerlag.utils.VillagerUtilities;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 
 public class NameTagAI {
