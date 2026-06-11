@@ -28,6 +28,7 @@ public class RadiusWorkBlock {
         int radius = plugin.getConfig().getInt("toggleableoptions.workstationcheckradius");
         boolean willBeDisabled = false;
 
+        blocksToCheck.clear();
         for (String blockName : plugin.getConfig().getStringList("WorkstationsThatDisable")) {
             Material block = Material.getMaterial(blockName.toUpperCase());
             if (block != null) {
@@ -36,12 +37,14 @@ public class RadiusWorkBlock {
         }
 
         // Check for blocks within the specified radius
+        outer:
         for (int x = -radius; x <= radius; x++) {
             for (int y = -radius; y <= radius; y++) {
                 for (int z = -radius; z <= radius; z++) {
                     Location blockLocation = new Location(vil.getWorld(), vil.getLocation().getX() + x, vil.getLocation().getY() + y, vil.getLocation().getZ() + z);
                     if (blocksToCheck.contains(blockLocation.getBlock().getType())) {
                         willBeDisabled = true;
+                        break outer;
                     }
                 }
             }

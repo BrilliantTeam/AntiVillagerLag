@@ -41,7 +41,7 @@ public class VillagerLevelManager {
         if (vilLevel < newLevel) {
             VillagerUtilities.setLevelCooldown(vil, plugin, cooldown);
             // make villager immovable while AI is disabled
-            vil.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, (int)(cooldown * 20)+20, 120, false, false));
+            vil.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, (int)(cooldown * 20)+20, 10, false, false));
             vil.setAware(true);
         } else return;
 

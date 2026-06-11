@@ -62,7 +62,8 @@ public class NameTagAI {
         ItemStack item = player.getInventory().getItemInMainHand();
 
         // Check that the player uses a named name-tag
-        if (!item.getType().equals(Material.NAME_TAG) || !item.getItemMeta().hasDisplayName())
+        org.bukkit.inventory.meta.ItemMeta meta = item.getItemMeta();
+        if (!item.getType().equals(Material.NAME_TAG) || meta == null || !meta.hasDisplayName())
             return;
 
         // Replenish the name-tag
@@ -70,7 +71,7 @@ public class NameTagAI {
             VillagerUtilities.returnItem(player, plugin);
         }
         List<String> namesThatDisable = plugin.getConfig().getStringList("NamesThatDisable");
-        String itemName = item.getItemMeta().getDisplayName().replaceAll("(?i)[§&][0-9A-FK-ORX]", "");
+        String itemName = meta.getDisplayName().replaceAll("(?i)[§&][0-9A-FK-ORX]", "");
         boolean willBeDisabled = namesThatDisable.contains(itemName);
 
         // Handle the correct AI state

@@ -123,8 +123,8 @@ public class EventListenerHandler implements Listener {
             VillagerUtilities.setDisabledByBlock(vil, plugin, false);
         }
 
-        // handle Nametag Ai, check if it is already disabled by block
-        if (plugin.getConfig().getBoolean("toggleableoptions.userenaming") && !VillagerUtilities.getDisabledByBlock(vil, plugin) && !VillagerUtilities.getDisabledByBlock(vil, plugin))
+        // handle Nametag Ai, check if it is already disabled by block or workstation
+        if (plugin.getConfig().getBoolean("toggleableoptions.userenaming") && !VillagerUtilities.getDisabledByBlock(vil, plugin) && !VillagerUtilities.getDisabledByWorkstation(vil, plugin))
             nameTagAI.call(vil, player, e);
 
         // handle Block Ai, check if nametag cancelled event (avoid duplicate error?)
@@ -156,7 +156,7 @@ public class EventListenerHandler implements Listener {
 
         if(event.getInventory().getType() != InventoryType.MERCHANT) return;
 
-        if (event.getInventory().getHolder() == null) return;
+        if (!(event.getInventory().getHolder() instanceof Villager)) return;
 
         Villager vil = (Villager) event.getInventory().getHolder();
 
