@@ -74,9 +74,8 @@ public class VillagerUtilities {
     }
     public static String replaceText(String text, String stuff2cut, String replacement) {
         int index = text.indexOf(stuff2cut);
-        String text1 = text.substring(0, index);
-        String text2 = text.substring(index + stuff2cut.length());
-        return text1 + replacement + text2;
+        if (index == -1) return text;
+        return text.substring(0, index) + replacement + text.substring(index + stuff2cut.length());
     }
     public static void restock(Villager v) {
         List<MerchantRecipe> recipes = v.getRecipes();

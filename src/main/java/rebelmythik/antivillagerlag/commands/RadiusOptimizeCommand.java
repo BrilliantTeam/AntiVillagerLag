@@ -64,7 +64,7 @@ public class RadiusOptimizeCommand implements CommandExecutor {
 
                             // If villager has already been disabled check if they do have a cooldown
                             // to prevent bypassing of the cooldown feature
-                            if (cooldown > currentTime) return false;
+                            if (cooldown > currentTime) continue;
 
                             // Set Villager Name to Optimize Name and disable the AI
                             List<String> namesThatDisable = plugin.getConfig().getStringList("NamesThatDisable");
@@ -73,12 +73,13 @@ public class RadiusOptimizeCommand implements CommandExecutor {
 
                             // set all necessary flags and timers
                             VillagerUtilities.setMarker((Villager) vil, plugin);
-                            VillagerUtilities.setNewCooldown((Villager) vil, plugin, cooldown);
+                            VillagerUtilities.setNewCooldown((Villager) vil, plugin, this.cooldown);
                         }
 
                     }
                 }
             }
+            return true;
         }
         return false;
     }

@@ -27,6 +27,7 @@ public final class AntiVillagerLag extends JavaPlugin {
         getCommand("avlreload").setExecutor(new ReloadCommand(this));
         getCommand("avloptimize").setExecutor(new RadiusOptimizeCommand(this));
         saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
         updateConfig();
 
         int pluginId = 15890;
