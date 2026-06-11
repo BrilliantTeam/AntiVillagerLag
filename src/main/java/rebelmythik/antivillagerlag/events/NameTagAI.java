@@ -16,11 +16,9 @@ import java.util.function.Supplier;
 public class NameTagAI {
     private final AntiVillagerLag plugin;
     ColorCode colorCodes = new ColorCode();
-    private final long cooldown;
 
     public NameTagAI(AntiVillagerLag plugin) {
         this.plugin = plugin;
-        this.cooldown = plugin.getConfig().getLong("cooldown");
     }
 
 
@@ -56,6 +54,7 @@ public class NameTagAI {
     }
 
     public void call(Villager vil, Player player, PlayerInteractEntityEvent e) {
+        long cooldown = plugin.getConfig().getLong("cooldown");
 
         // Toggle Option To Disable this Class
         if (!plugin.getConfig().getBoolean("toggleableoptions.userenaming")) return;

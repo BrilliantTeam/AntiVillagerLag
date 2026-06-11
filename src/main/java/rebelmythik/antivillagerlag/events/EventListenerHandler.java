@@ -38,6 +38,7 @@ public class EventListenerHandler implements Listener {
     }
 
     public void sanityChecks(Villager vil, long currentTime){
+        long cooldown = plugin.getConfig().getLong("cooldown");
 
         long vilLevelCooldown = VillagerUtilities.getLevelCooldown(vil, plugin);
         long vilCooldown = VillagerUtilities.getCooldown(vil, plugin);
@@ -46,8 +47,8 @@ public class EventListenerHandler implements Listener {
         if(vilLevelCooldown > currentTime + villagerLevelManager.cooldown * 2)
             VillagerUtilities.setLevelCooldown(vil, plugin, villagerLevelManager.cooldown);
 
-        if(vilCooldown > currentTime + blockAi.cooldown * 2)
-            VillagerUtilities.setNewCooldown(vil, plugin, blockAi.cooldown);
+        if(vilCooldown > currentTime + cooldown * 2)
+            VillagerUtilities.setNewCooldown(vil, plugin, cooldown);
 
         if(vilTime > vil.getWorld().getFullTime())
             VillagerUtilities.setNewTime(vil, plugin);

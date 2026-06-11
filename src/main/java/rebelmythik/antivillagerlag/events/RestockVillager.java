@@ -13,12 +13,10 @@ import static rebelmythik.antivillagerlag.utils.VillagerUtilities.restock;
 
 public class RestockVillager {
     private final AntiVillagerLag plugin;
-    private final List<Long> restockTimes;
     ColorCode colorCodes = new ColorCode();
 
     public RestockVillager(AntiVillagerLag plugin) {
         this.plugin = plugin;
-        this.restockTimes = plugin.getConfig().getLongList("RestockTimes.times");
     }
 
     public void restockMessage(long timeTillNextRestock, Player player) {
@@ -38,6 +36,7 @@ public class RestockVillager {
     }
 
     public boolean handleRestock(Villager vil, long currDayTimeTick, AntiVillagerLag plugin) {
+        List<Long> restockTimes = plugin.getConfig().getLongList("RestockTimes.times");
 
         long curTick = vil.getWorld().getFullTime();
 
@@ -81,6 +80,7 @@ public class RestockVillager {
 
         // check if he gets to see cool-down time
         if (player.hasPermission("avl.message.nextrestock")) {
+            List<Long> restockTimes = plugin.getConfig().getLongList("RestockTimes.times");
             long timeTillNextRestock = Long.MAX_VALUE;
             long currentDay = vil.getWorld().getFullTime() - currDayTimeTick;
 

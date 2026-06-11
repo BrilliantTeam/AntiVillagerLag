@@ -15,16 +15,14 @@ public class RadiusWorkBlock {
     private final AntiVillagerLag plugin;
     ColorCode colorCodes = new ColorCode();
 
-    long cooldown;
-
     private List<Material> blocksToCheck = new ArrayList<>();
 
     public RadiusWorkBlock(AntiVillagerLag plugin) {
         this.plugin = plugin;
-        this.cooldown = plugin.getConfig().getLong("cooldown");
     }
 
     public void call(Villager vil, Player player) {
+        long cooldown = plugin.getConfig().getLong("cooldown");
         int radius = plugin.getConfig().getInt("toggleableoptions.workstationcheckradius");
         boolean willBeDisabled = false;
 

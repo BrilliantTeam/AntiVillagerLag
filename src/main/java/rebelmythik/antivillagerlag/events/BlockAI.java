@@ -13,14 +13,13 @@ import java.util.List;
 public class BlockAI {
     private final AntiVillagerLag plugin;
     ColorCode colorCodes = new ColorCode();
-    long cooldown;
 
     public BlockAI(AntiVillagerLag plugin) {
         this.plugin = plugin;
-        this.cooldown = plugin.getConfig().getLong("cooldown");
     }
 
     public void call(Villager vil, Player player) {
+        long cooldown = plugin.getConfig().getLong("cooldown");
 
         Location loc = vil.getLocation();
         Material belowvil = vil.getWorld().getBlockAt(loc.getBlockX(), (loc.getBlockY()-1), loc.getBlockZ()).getType();
